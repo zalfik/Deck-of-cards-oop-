@@ -40,7 +40,7 @@ class Deck:
 
         # Create a deck in cards list
         for rank in rank_names:
-            for suit in suits_symbols.keys():
+            for suit in suits_symbols:
                 card = Card(rank, suit)
                 self.cards.append(card)
         return self
