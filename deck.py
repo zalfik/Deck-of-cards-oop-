@@ -1,8 +1,8 @@
 import random
 
 """
-    Class 'Card' to create a single card with rank & suit attribiute
-    Clas 'Deck' to create full deck of 52 'Card' objects (13 ranks with 4 suits)
+    Class 'Card' creates a single card with rank & suit attribiute
+    Clas 'Deck' creates full deck of 52 'Card' objects (13 ranks with 4 suits)
 
 """
     
@@ -23,6 +23,12 @@ class Card:
     def __init__(self, rank, suit):
         self.rank = rank
         self.suit = suit
+    
+
+    def __iter__(self):
+        yield self.rank
+        yield suits_symbols[self.suit]
+
 
     # Show single card with rank and symbol of a suit
     def show(self):
@@ -57,7 +63,7 @@ class Deck:
             card.show()
 
 
-    # Get a single card & delete it from the deck
+    # Get a single card tuple & delete it from the back of a deck
     def get_card(self):
         card = self.cards.pop()
         return card
