@@ -1,4 +1,4 @@
-from deck import rank_names
+from deck import *
 
 
 """ Code by 
@@ -8,14 +8,16 @@ from deck import rank_names
 
 def card_value(card):
     """Returns the integer value of a single card."""
-    card = tuple(card)
-    rank = card[0]
+    #card = tuple(card)
+    rank = card.rank
     if rank in rank_names[0:-4]:
         return int(rank)
-    elif rank is 'A':
+    elif rank == 'A':
         return 11
     else:
         return 10
+
+
 
 def hand_value(hand):
     """Returns the integer value of a set of cards."""
@@ -23,13 +25,13 @@ def hand_value(hand):
     # Naively sum up the cards in the deck.
     tmp_value = sum(card_value(_) for _ in hand)
     # Count the number of Aces in the hand.
-    num_aces = len([_ for _ in hand if _[0] is 'A'])
+    num_aces = len([_ for _ in hand if _.rank is 'A'])
 
     # Aces can count for 1, or 11. If it is possible to bring the value of 
     #the hand under 21 by making 11 -> 1 substitutions, do so.
     while num_aces > 0:
 
-        if tmp_value > 21 and 'A' in rank_names:
+        if tmp_value > 21:# and 'A' in rank_names:
             tmp_value -= 10
             num_aces -= 1
         else:
@@ -43,4 +45,3 @@ def hand_value(hand):
         return ['Blackjack!', 21]
     else:
         return ['Bust!', 100]
-

@@ -7,7 +7,7 @@ import random
 """
     
 
-# Link suit to symbol; 's' for Spades, 'c' for Clubs, 'h' for Hearts, 'd' for Dimonds.
+# Link a suit to a symbol; 's' for Spades, 'c' for Clubs, 'h' for Hearts, 'd' for Dimonds.
 suits_symbols = {
     's' : chr(9828),
     'c' : chr(9827),
@@ -32,7 +32,7 @@ class Card:
 
     # Show single card with rank and symbol of a suit
     def show(self):
-        print('{}{}'.format(self.rank, suits_symbols[self.suit]))
+        print('{}{}'.format(self.rank, suits_symbols[self.suit]), end=' ')
 
 
 class Deck:
@@ -41,7 +41,7 @@ class Deck:
 
     # Create a list of 52 cards ordered from 2♤ to A♦
     def build(self):
-        # Clear cards list before building new deck
+        # Clear cards list before building a new deck
         self.cards.clear()
 
         # Create a deck in cards list
@@ -61,13 +61,27 @@ class Deck:
     def show_deck(self):
         for card in self.cards:
             card.show()
+        print('')
 
 
-    # Get a single card tuple & delete it from the back of a deck
+    # Get a single card object & delete it from the back of a deck
     def get_card(self):
         card = self.cards.pop()
         return card
-        
 
 
+class Hand:
+    def __init__(self):
+        self.cards = []
+    
 
+    def add_card(self, card):
+        self.cards.append(card)
+
+
+    # Show full hand --- IT'S UGLY, PYTHONIZE THAT!!!!
+    def show_hand(self):
+        print('>>', end=' ')
+        for card in self.cards:
+            card.show()
+        print('<<')
