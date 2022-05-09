@@ -77,10 +77,12 @@ class Hand:
 
     def add_card(self, card):
         self.cards.append(card)
+        return self
 
 
     # Show full hand --- IT'S UGLY, PYTHONIZE THAT!!!!
     def show_hand(self):
+        #print('>> {} <<'.format(card.show()) for card in self.cards) ???
         print('>>', end=' ')
         for card in self.cards:
             card.show()
