@@ -90,15 +90,14 @@ def start_game():
         else:
             player_in = False
 
+    dealer_hand_value = hand_value(dealer.cards)[1]
     if game_hand_value < 21:
-        dealer_hand_value = hand_value(dealer.cards)[1]
         while dealer_hand_value < 17:
             dealer.add_card(deck.get_card())
             dealer_hand_value = hand_value(dealer.cards)[1]
             print(f'\nCurrent dealer score:{dealer_hand_value} \n with hand:', end=' ')
-            dealer.show_hand()
-    
-    if game_hand_value > dealer_hand_value:
-        print('\nYou win!')
-    else:
-        print('\nYou loose!')
+            dealer.show_hand()    
+        if (dealer_hand_value == 100) or (game_hand_value > dealer_hand_value):
+            print('\nYou win!')
+        else:
+            print('\nYou loose!')
